@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+             $('#srch-box').keypress(function(e){
+                if(e.keyCode==13)
+                    $('#find-btn').click();
+            });
+
+            $('#find-btn').click(function(e) {
+                var city = document.getElementById("srch-box").value;
+                data = {'city' : city};
+                $.ajax({
+                    url: "{{ url_for ('find') }}",
+                    //contentType: "application/json",
+                    data,
+                    success: function(result) {
+                        if(result.cod == 200){
+                            $('element#city').html('<b>' + result.city + ',</b> ');
+                            $('element#country').html('<b>' + result.count + '</b>');
+                            $('element#temp').html(result.temp);
+                            $('element#desc').html(result.desc);
+                            $('element#press').html(result.press);
+                            $('element#humid').html(result.humid);
+                            $('element#wind').html(result.wind);
+                        }
+                        else
+                            alert("Invalid City Name: " + city);
+                    }
+                });
+            });
+
+            $("#id1").click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $("#srch-box").offset().top - 120
+                }, 750);
+            });
+
+            $("#id2").click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $("#abt-head").offset().top - 80
+                }, 750);
+            });
+
+            $("#id3").click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $("#cntct-head").offset().top - 80
+                }, 750);
+            });
+        });
+    </script>    
+</head>
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="background-color: #1e1e1e;" id="nvbr">
+        <a class="navbar-brand" href="/">WeatherApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link py-0" href="/" id="id1">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link py-0" href="/" id="id2">About</a>
+                <a class="nav-item nav-link py-0" href="/" id="id3">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <center>
+        <input type="text" placeholder="Search city" id="srch-box" name="city">
+        <input type="button" value="Find" id="find-btn">
+    </center>
+
+    <center>
+        <div class="grid-container">
+            <div class="grid-item" id="main">
+                <element id="city" style="font-size: 20px;"><b>{{ wthr.city }}, </b></element>
+                <element id="country" style="font-size: 20px;"><b>{{ wthr.count }}</b></element><br>
+                <element id="temp" style="font-size: 24px;">{{ wthr.temp }}</element><element id="unit" style="font-size: 16px;"> °C</element><br>
+                <element id="desc" style="font-size: 18px;">{{ wthr.desc }}</element>
+            </div>
+            <div class="grid-item" id="extra"><br>            
+                <element id="extra-type" style="font-size: 18px;"><b>Pressure</b></element><br>
+                <element id="press" style="font-size: 24px;">{{ wthr.press }}</element><element id="extra-unit" style="font-size: 16px;"> bar</element>
+            </div>
+            <div class="grid-item" id="extra"><br>
+                <element id="extra-type" style="font-size: 18px;"><b>Humidity</b></element><br>
+                <element id="humid" style="font-size: 24px;">{{ wthr.humid }}</element><element id="extra-unit" style="font-size: 16px;"> %</element>
+            </div>
+            <div class="grid-item" id="extra"><br>
+                <element id="extra-type" style="font-size: 18px;"><b>Wind Speed</b></element><br>
+                <element id="wind" style="font-size: 24px;">{{ wthr.wind }}</element><element id="extra-unit" style="font-size: 16px;"> m/s</element>
+            </div>
+        </div>
+    </center>
+    
+    <center>
+        <div id="about">
+            <div id="abt-head"><b>About</b></div>
+            <div id="abt-dtl">
+                WeatherApp can be used to get to know the temperature and other weather realted details of any city. 
+                In case of any invalid city name, the website just sends an alert message.<br><br>
+                The website gathers the weather data from OpenWeatherMap API.<br>
+                Using Flask the JSON file is passed on to the frontend and the details are displayed.<br>
+            </div>
+        </div>
+    </center>
+    
+    <center>
+        <div id="contact">
+            <div id="cntct-head"><b>Contact</b></div><br>
+        </div>
+
+        <div class="new-grid-container">
+            <div class="new-grid-item" id="pic-info"><br>
+                <img src="{{url_for('static', filename='rachit.png')}}" width="120" height="120" id="my-pic"><br>
+                <element id="my-name"><b>Rachit Gangwal</b></element><br>
+                <element id="my-info">CSE Student<br>MIT, Manipal</element>
+            </div>
+            <div class="new-grid-item" id="email"><br>            
+                <element id="heading"><b>E-mail</b></element><br>
+                <element id="my-dtl">
+                    <a href="mailto: gangwalrachit1989@gmail.com" style="color: darkgrey">gangwalrachit1989@gmail.com</a>
+                </element>
+            </div>
+            <div class="new-grid-item" id="ph-num"><br>            
+                <element id="heading"><b>Phone Number</b></element><br>
+                <element id="my-dtl">
+                    <a href="tel: +91 91232 63150" style="color: darkgrey">+91 91232 63150</a>
+                </element>
+            </div>
+            <div class="new-grid-item" id="lnkd-in"><br>            
+                <element id="heading"><b>LinkedIn</b></element><br>
+                <element id="my-dtl">
+                    <a href="https://linkedin.com/in/gangwalrachit" style="color: darkgrey">@gangwalrachit</a>
+                </element>
+            </div>
+            <div class="new-grid-item" id="git"><br>            
+                <element id="heading"><b>GitHub</b></element><br>
+                <element id="my-dtl" >
+                    <a href="https://github.com/gangwalrachit" style="color: darkgrey">@gangwalrachit</a>
+                </element>
+            </div>
+        </div>
+    </center>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

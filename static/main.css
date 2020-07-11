@@ -1,0 +1,262 @@
+body {
+    background: black;
+}
+
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.navbar-brand {
+    color: #ffffff;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+#about {
+    padding-top: 200px;
+}
+#abt-head {
+    color: white;
+    background-color: royalblue;
+    border-style: none;
+    font-size: 24px;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+}
+
+#contact {
+    padding-top: 200px;
+}
+#cntct-head {
+    color: white;
+    background-color: royalblue;
+    border-style: none;
+    font-size: 24px;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+}
+
+@media (min-width: 766px) {
+    #id1, #id2, #id3 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #srch-box {
+        margin-top: 100px;
+        padding-left: 20px;
+        width: 660px;
+        height: 40px;
+        border-style: none;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        font-size: 18px;
+    }
+    #find-btn {
+        color: white;
+        background-color: royalblue;
+        margin-right: 30px;
+        border-style: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        width: 80px;
+        height: 40px;
+    }
+
+    .grid-container {
+        margin-top: 120px;
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        width: 740px;
+        height: 250px;
+    }
+    .grid-container > #main {
+        text-align: left;
+        color: white;
+        background: #1a1818;
+        padding-top: 90px;
+        padding-left: 20px;
+        width: 220px;
+        border-radius: 40px;
+    }
+    .grid-container > #extra {
+        text-align: left;
+        color: white;
+        background: royalblue;
+        padding-top: 80px;
+        padding-left: 20px;
+        width: 140px;
+        border-radius: 40px;
+    }
+
+    #abt-dtl {
+        margin-top: 40px;
+        color: white;
+        background-color: #1a1818;
+        text-align: left;
+        font-size: 16px;
+        width: 740px;
+        height: 200px;
+        padding: 20px;
+        border-style: none;
+        border-radius: 20px;
+    }
+
+    #pic-info { grid-area: pic-info; }
+    #email { grid-area: email; }
+    #ph-num { grid-area: ph-num; }
+    #lnkd-in { grid-area: lnkd-in; }
+    #git { grid-area: git; }
+    .new-grid-container {
+        margin-top: 30px;
+        display: grid;
+        grid-template-areas: 
+            'pic-info email ph-num'
+            'pic-info lnkd-in git';
+        width: 740px;
+        height: 300px;
+        margin-bottom: 200px;
+    }
+    .new-grid-container > #pic-info {
+        color: white;
+        background: royalblue;
+        width: 175px;
+        height: 295px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .new-grid-container > #email, #ph-num, #lnkd-in, #git {
+        color: white;
+        background: #1a1818;
+        width: 275px;
+        height: 145px;
+    }
+    .new-grid-container > #ph-num {
+        border-top-right-radius: 20px;
+    }
+    .new-grid-container > #git {
+        border-bottom-right-radius: 20px;
+    }
+
+    #my-pic {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    #my-name {
+        font-size: 20px;
+    }
+    #my-info {
+        font-size: 16px;
+    }
+    #heading {
+        font-size: 20px;
+        line-height: 50px;
+    }
+    #my-dtl {
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 766px) {
+    #id1, #id2, #id3 {
+        padding-right: 0;
+    }
+
+    #srch-box {
+        margin-top: 120px;
+        width: 65%;
+        height: 40px;
+        border-style: none;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        font-size: 18px;
+        padding-left: 20px;
+    }
+    #find-btn {
+        color: white;
+        background-color: royalblue;
+        border-style: none;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        width: 60px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .grid-container {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: auto;
+        width: 90%;
+        height: 660px;
+    }
+    .grid-container > #main {
+        text-align: left;
+        color: white;
+        background: #1a1818;
+        padding-top: 40px;
+        padding-left: 20px;
+        border-radius: 40px;
+        width: 100%;
+        height: 180px;
+    }
+    .grid-container > #extra {
+        text-align: left;
+        color: white;
+        background: royalblue;
+        padding-top: 20px;
+        padding-left: 20px;
+        border-radius: 40px;
+        width: 100%;
+        height: 150px;
+    }
+
+    #abt-dtl {
+        margin-top: 40px;
+        color: white;
+        background-color: #1a1818;
+        text-align: left;
+        font-size: 16px;
+        width: 90%;
+        height: 300px;
+        padding: 20px;
+        border-style: none;
+        border-radius: 20px;
+    }
+
+    .new-grid-container {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: auto;
+        width: 90%;
+        height: 700px;
+        margin-bottom: 200px;
+    }
+    .new-grid-container > #pic-info {
+        color: white;
+        background: royalblue;
+        width: 100%;
+        height: 240px;
+        border-radius: 20px;
+    }
+    .new-grid-container > #email, #ph-num, #lnkd-in, #git {
+        color: white;
+        background: #1a1818;
+        width: 100%;
+        height: 100px;
+        border-radius: 20px;
+    }
+    #heading {
+        font-size: 18px;
+        line-height: 25px;
+    }
+    #my-dtl {
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
