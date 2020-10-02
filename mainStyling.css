@@ -1,0 +1,39 @@
+body {
+    background: royalblue;
+}
+
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.navbar-brand {
+    color: #ffffff;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+#about {
+    padding-top: 200px;
+}
+#abt-head {
+    color: white;
+    background-color: black;
+    border-style: none;
+    font-size: 24px;
+    border-radius: 20px;
+    width: 100px;
+    height: 40px;
+}
+
+#contact {
+    padding-top: 200px;
+}
+#cntct-head {
+    color: white;
+    background-color: black;
+    border-style: none;
+    font-size: 24px;
+    border-radius: 20px;
+    width: 120px;
+    height: 40px;
+}
